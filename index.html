@@ -6,7 +6,7 @@
 <meta name="description" content="Besh — цифровое меню для ресторана: планшеты на столах, QR-меню в телефоне гостя и сайт-визитка. Работает в зале без интернета.">
 <meta name="theme-color" content="#fbfbfd">
 <title>Besh — цифровое меню для ресторана</title>
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect fill='%231d1d1f' width='64' height='64' rx='14'/%3E%3Cpath d='M32 13 51 32 32 51 13 32Z' fill='none' stroke='%23c9a84c' stroke-width='4'/%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 400'%3E%3Crect width='400' height='400' rx='92' fill='%231d1d1f'/%3E%3Cg fill='none' stroke='%23ffffff' stroke-width='31.5' stroke-linecap='round'%3E%3Cline x1='200' y1='161' x2='290.63' y2='91.99'/%3E%3Cline x1='237.09' y1='187.95' x2='330.73' y2='252.82'/%3E%3Cline x1='222.92' y1='231.55' x2='190.16' y2='340.66'/%3E%3Cline x1='177.08' y1='231.55' x2='63.19' y2='234.11'/%3E%3Cline x1='162.91' y1='187.95' x2='125.28' y2='80.43'/%3E%3C/g%3E%3C/svg%3E">
 <!--
   ═══════════════════════════════════════════════════════════════
   Контакты: Telegram @beshsupport, тел. +998 88 218-88-80, почта kyegemov@gmail.com.
@@ -76,16 +76,25 @@ a, button { -webkit-tap-highlight-color: transparent; }
   display: flex; align-items: center; gap: 28px;
   height: 56px;
 }
-.wordmark {
-  font-family: var(--display);
-  font-size: 26px; letter-spacing: .02em;
+.brand {
+  display: inline-flex; align-items: center; gap: 11px;
   color: var(--ink); text-decoration: none;
-  display: flex; align-items: baseline; gap: 10px;
 }
-.wordmark small {
+.brand-mark { height: 25px; width: auto; filter: invert(1); }
+.brand small {
   font-family: var(--sans); font-size: 10px; font-weight: 600;
   letter-spacing: .18em; text-transform: uppercase; color: var(--muted);
+  padding-left: 11px; border-left: 1px solid var(--line);
 }
+/* Вертушка (фирменный знак) */
+.pinwheel svg { display: block; width: 100%; height: 100%; }
+.pinwheel-hero { display: block; width: 54px; height: 54px; margin: 0 auto 20px; color: var(--ink); }
+.pinwheel-contact { display: block; width: 44px; height: 44px; margin: 0 auto 16px; position: relative; color: #f2ede3; }
+.blades {
+  transform-box: fill-box; transform-origin: center;
+  animation: besh-spin 6s linear infinite;
+}
+@keyframes besh-spin { to { transform: rotate(360deg); } }
 .site-nav { display: flex; align-items: center; gap: 26px; margin-left: auto; }
 .site-nav a {
   text-decoration: none; font-size: 13.5px; color: var(--muted);
@@ -266,7 +275,7 @@ section { scroll-margin-top: 76px; }
 /* ── Подвал ────────────────────────────────────────── */
 .site-foot { border-top: 1px solid var(--line-faint); padding: 34px 0 44px; }
 .site-foot .container { display: flex; align-items: baseline; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
-.site-foot .wordmark { font-size: 22px; }
+.brand-foot .brand-mark { height: 20px; }
 .site-foot p { color: var(--muted); font-size: 13px; }
 .site-foot p a { text-decoration: none; color: var(--ink); }
 .site-foot p a:hover { text-decoration: underline; }
@@ -278,6 +287,7 @@ section { scroll-margin-top: 76px; }
   html { scroll-behavior: auto; }
   [data-reveal] { opacity: 1; transform: none; transition: none; }
   .btn, .feat { transition: none; }
+  .blades { animation: none; }
 }
 
 /* ── Адаптив ───────────────────────────────────────── */
@@ -312,6 +322,7 @@ section { scroll-margin-top: 76px; }
 }
 @media (max-width: 480px) {
   .container { padding: 0 20px; }
+  .brand small { display: none; }
   .stat b { font-size: 32px; }
   .stat span { font-size: 12.5px; }
   .server-card, .why { padding: 26px 22px; }
@@ -326,7 +337,10 @@ section { scroll-margin-top: 76px; }
 
 <header class="site-head">
   <div class="container">
-    <a class="wordmark" href="#">Besh <small>цифровое меню</small></a>
+    <a class="brand" href="#">
+      <img class="brand-mark" src="img/logos/besh_horizontal_white.png" alt="Besh" width="1253" height="480">
+      <small>цифровое меню</small>
+    </a>
     <nav class="site-nav" aria-label="Основная навигация">
       <a href="#how">Как устроено</a>
       <a href="#features">Возможности</a>
@@ -341,6 +355,9 @@ section { scroll-margin-top: 76px; }
 <!-- ═══ HERO ═══ -->
 <section class="hero">
   <div class="container">
+    <span class="pinwheel pinwheel-hero" aria-hidden="true">
+      <svg viewBox="0 0 400 400"><g class="blades" fill="none" stroke="currentColor" stroke-width="31.5" stroke-linecap="round"><line x1="200" y1="161" x2="290.63" y2="91.99"/><line x1="237.09" y1="187.95" x2="330.73" y2="252.82"/><line x1="222.92" y1="231.55" x2="190.16" y2="340.66"/><line x1="177.08" y1="231.55" x2="63.19" y2="234.11"/><line x1="162.91" y1="187.95" x2="125.28" y2="80.43"/></g></svg>
+    </span>
     <span class="eyebrow">Цифровое меню для ресторана</span>
     <h1>Одно меню — на планшете, в&nbsp;телефоне и&nbsp;в&nbsp;интернете</h1>
     <p class="hero-sub">Besh ставится на компьютер ресторана и показывает меню
@@ -542,6 +559,9 @@ section { scroll-margin-top: 76px; }
 <section class="sect" id="contact">
   <div class="container">
     <div class="contact-card" data-reveal>
+      <span class="pinwheel pinwheel-contact" aria-hidden="true">
+        <svg viewBox="0 0 400 400"><g fill="none" stroke="currentColor" stroke-width="31.5" stroke-linecap="round"><line x1="200" y1="161" x2="290.63" y2="91.99"/><line x1="237.09" y1="187.95" x2="330.73" y2="252.82"/><line x1="222.92" y1="231.55" x2="190.16" y2="340.66"/><line x1="177.08" y1="231.55" x2="63.19" y2="234.11"/><line x1="162.91" y1="187.95" x2="125.28" y2="80.43"/></g></svg>
+      </span>
       <span class="eyebrow">Демонстрация</span>
       <h2>Покажем Besh на вашем меню</h2>
       <p>Привезём планшет с вашими блюдами и покажем всё вживую.
@@ -560,7 +580,9 @@ section { scroll-margin-top: 76px; }
 
 <footer class="site-foot">
   <div class="container">
-    <a class="wordmark" href="#">Besh</a>
+    <a class="brand brand-foot" href="#">
+      <img class="brand-mark" src="img/logos/besh_horizontal_white.png" alt="Besh" width="1253" height="480">
+    </a>
     <p><a href="mailto:kyegemov@gmail.com">kyegemov@gmail.com</a> · Цифровое меню для ресторанов · © 2026</p>
   </div>
 </footer>
